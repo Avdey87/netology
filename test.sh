@@ -12,3 +12,12 @@ greet() {
 greet
 
 echo "Development work in progress..."
+
+# New feature: calculate sum
+calculate_sum() {
+    local a=$1
+    local b=$2
+    echo $((a + b))
+}
+
+echo "2 + 3 = $(calculate_sum 2 3)"
