@@ -21,3 +21,17 @@ calculate_sum() {
 }
 
 echo "2 + 3 = $(calculate_sum 2 3)"
+
+# Error handling function
+check_file() {
+    local file=$1
+    if [ -f "$file" ]; then
+        echo "File $file exists"
+        return 0
+    else
+        echo "File $file does not exist"
+        return 1
+    fi
+}
+
+check_file "test.sh"
