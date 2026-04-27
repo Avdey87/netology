@@ -1,0 +1,14 @@
+# 1. Создаём правильную директорию для ключей (если её нет)
+sudo mkdir -p /usr/share/keyrings/
+
+# 2. Скачиваем и сохраняем ключ Jenkins (обратите внимание на расширение .asc)
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+# 3. Добавляем репозиторий, указывая правильный файл ключа
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+# 4. Теперь обновляем список пакетов — ошибок быть не должно
+sudo apt update
+
+# 5. Устанавливаем Jenkins
+sudo apt install -y jenkins
